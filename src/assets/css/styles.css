@@ -6,7 +6,6 @@ body {
 
 .navbar {
     background-color: #2a2a2a;
-    padding: 20px 0;
 }
 
 .nav-link {
@@ -113,3 +112,75 @@ body {
     left: 0;
     right: 0;
 }
+
+.services-and-about {
+    margin-bottom: 100px;
+}
+
+.services {
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.services-cards {
+    margin-top: -80px;
+}
+
+.services-cards a{
+    text-decoration: none;
+    color: #2a2a2a;
+}
+
+.services-cards .card img{
+    border: none;
+    width: 50px;
+    height: 50px;
+    align-self: center;
+}
+
+.services-cards .card {
+    border: none;
+    border-radius: 0;
+    transition: opacity 0.4s ease-in-out;
+    position: relative;
+}
+
+.services-cards .card:hover {
+    zoom: 1;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+}
+
+.clientes {
+    background-color: #2a2a2a;
+    padding: 100px;
+}
+
+.sobre {
+    margin-top: 94px;
+    width:100%;
+    height:500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+/* .sobre-fundo img {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.sobre-fundo {
+    position: relative;
+}
+
+.sobre-texto {
+    position: absolute;
+    text-align: center;
+    top: 78%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+} */
