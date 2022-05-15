@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/all.css">
+
+    <link rel="icon" href="assets/images/icon.png">
     <title>Medmais</title>
 </head>
 
@@ -70,30 +72,6 @@
 
     <section class="info-servicos">
         <div class="container">
-
-            <div class="d-flex justify-content-center align-items-center mb-5">
-                <div class="first-card">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/servicos/produtos-pag-servicos.jpg"
-                            alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Produtos <span class="badge badge-dark">Novo</span></h5>
-                            <div class="mb-0 alert alert-info alert-dismissible fade show">
-                                <strong>Novidade por aqui!</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, aspernatur vel
-                                blanditiis consectetur doloremque reprehenderit omnis totam, ratione ea qui quis ipsam
-                                fuga maxime. Aliquid quisquam eum facilis sequi ea!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
                     <div class="card">
@@ -101,6 +79,20 @@
                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Produtos <span class="badge badge-dark">Novo</span></h5>
+
+                            <div class="d-flex justify-content-center" style="display: inline;">
+                                <span id="like-produtos" data-like="8">8</span>
+                                <a id="like-produtos-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
+                                <a id="dislike-produtos-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-down"></i>
+                                </a>
+                                <span id="dislike-produtos" data-dislike="3">3</span>
+                            </div>
+
                             <p class="card-text">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, aspernatur vel
                                 blanditiis consectetur doloremque reprehenderit omnis totam, ratione ea qui quis ipsam
@@ -115,6 +107,20 @@
                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Recolhimento Hospitalar</h5>
+
+                            <div class="d-flex justify-content-center" style="display: inline;">
+                                <span id="like-recolhimento" data-like="1">1</span>
+                                <a id="like-recolhimento-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
+                                <a id="dislike-recolhimento-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-down"></i>
+                                </a>
+                                <span id="dislike-recolhimento" data-dislike="0">0</span>
+                            </div>
+
                             <p class="card-text">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, aspernatur vel
                                 blanditiis consectetur doloremque reprehenderit omnis totam, ratione ea qui quis ipsam
@@ -129,6 +135,20 @@
                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Entrega Hospitalar</h5>
+
+                            <div class="d-flex justify-content-center" style="display: inline;">
+                                <span id="like-entrega" data-like="15">15</span>
+                                <a id="like-entrega-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
+                                <a id="dislike-entrega-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-down"></i>
+                                </a>
+                                <span id="dislike-entrega" data-dislike="6">6</span>
+                            </div>
+
                             <p class="card-text">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, aspernatur vel
                                 blanditiis consectetur doloremque reprehenderit omnis totam, ratione ea qui quis ipsam
@@ -143,6 +163,20 @@
                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Pesquisa Local</h5>
+
+                            <div class="d-flex justify-content-center" style="display: inline;">
+                                <span id="like-pesquisa" data-like="100">100</span>
+                                <a id="like-pesquisa-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
+                                <a id="dislike-pesquisa-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-down"></i>
+                                </a>
+                                <span id="dislike-pesquisa" data-dislike="10">10</span>
+                            </div>
+
                             <p class="card-text">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, aspernatur vel
                                 blanditiis consectetur doloremque reprehenderit omnis totam, ratione ea qui quis ipsam
@@ -157,6 +191,20 @@
                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Consultoria Organizacional</h5>
+
+                            <div class="d-flex justify-content-center" style="display: inline;">
+                                <span id="like-consultoria" data-like="76">76</span>
+                                <a id="like-consultoria-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
+                                <a id="dislike-consultoria-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-down"></i>
+                                </a>
+                                <span id="dislike-consultoria" data-dislike="24">24</span>
+                            </div>
+
                             <p class="card-text">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, aspernatur vel
                                 blanditiis consectetur doloremque reprehenderit omnis totam, ratione ea qui quis ipsam
@@ -171,6 +219,20 @@
                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Instalação de equipamentos</h5>
+
+                            <div class="d-flex justify-content-center" style="display: inline;">
+                                <span id="like-equipamentos" data-like="24">24</span>
+                                <a id="like-equipamentos-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-up"></i>
+                                </a>
+                                <a id="dislike-equipamentos-btn" href="javascript:void(0)" class="mx-2"
+                                    style="text-decoration: none;">
+                                    <i class="far fa-thumbs-down"></i>
+                                </a>
+                                <span id="dislike-equipamentos" data-dislike="8">8</span>
+                            </div>
+
                             <p class="card-text">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, aspernatur vel
                                 blanditiis consectetur doloremque reprehenderit omnis totam, ratione ea qui quis ipsam
