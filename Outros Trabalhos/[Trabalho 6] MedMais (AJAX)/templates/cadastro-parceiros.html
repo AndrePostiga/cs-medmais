@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Cadastro de Parceiros
+{% endblock %}
+
+{% block active-cadastro-parceiros %} active {% endblock %}
+
+{% block corpo %}
+
+    <section class="sobre">
+        <div class="sobre-banner jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4 mb-3">Cadastro de Parceiros <strong>Med<span style="color:#75c7fb;">+</span></strong></h1>
+                <div class="d-flex justify-content-start">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'sobre' %}">Sobre</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'servico' %}">Serviços</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'parceiros' %}">Parceiros</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Cadastro de Parceiros</li>
+                            <li class="breadcrumb-item"><a href="{% url 'contato' %}">Contato</a></li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="formulario-de-cadastro">
+        <form action="{% url 'cadastro-de-parceiros' %}" method="POST" id="formulario-cadastro" novalidate>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.cnpj.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.cnpj.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="cnpj">CNPJ</span>
+                            </div>
+                            {{ form.cnpj }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.nome.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.nome.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="nome">Nome</span>
+                            </div>
+                            <!--<input type="text" class="form-control" placeholder="Nome" aria-label="Nome">-->
+                            {{ form.nome }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.endereco.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.endereco.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="endereco">Endereço</span>
+                            </div>
+                            {{ form.endereco }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.telefone.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.telefone.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="telefone">Telefone</span>
+                            </div>
+                            {{ form.telefone }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-5">
+                        {% csrf_token %}
+                        {% if 'parceiro_id' in request.session %}
+                            <button type="submit" class="btn btn-success btn-block">Editar</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+
+{% endblock %}
+
+{% block dom-ready %}
+    $('#id_cnpj').mask('00.000.000/0000-00');
+    $('#id_telefone').mask('(00) 00000-0000');
+
+    $("#formulario-cadastro").submit(function() {
+      $("#id_cnpj").unmask();
+      $('#id_telefone').unmask();
+    });
+{% endblock %}

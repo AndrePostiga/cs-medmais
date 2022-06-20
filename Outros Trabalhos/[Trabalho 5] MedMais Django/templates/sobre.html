@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Sobre
+{% endblock %}
+
+{% block active-sobre %} active {% endblock %}
+
+{% block corpo %}
+
+    <section class="sobre">
+        <div class="sobre-banner jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4 mb-3">Conheça a <strong>Med<span style="color:#75c7fb;">+</span></strong></h1>
+                <div class="d-flex justify-content-start">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sobre</li>
+                            <li class="breadcrumb-item"><a href="{% url 'servico' %}">Serviços</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'parceiros' %}">Parceiros</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'cadastro-de-parceiros' %}">Cadastro de Parceiros</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'contato' %}">Contato</a></li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="institucional mb-4">
+        <div class="container">
+            <h3><strong>Somos apaixonados por melhorar as experiências hospitalares entre as funcionários e
+                    pacientes.</strong></h3>
+
+            <p>Muitas empresas, além de não entenderem, apenas venderem, não trabalham em conjunto com o cliente,
+                perdendo a oportunidade de entregar a melhor experiência para todos os envolvidos.</p>
+
+            <p>A MedMais nasceu para ajudar os clientes a fazer a diferença no mercado por meio de um atendimento
+                personalizado. Por isso, temos como compromisso aumentar a presença online gerando mais oportunidades e,
+                por consequência, alavancar as vendas.</p>
+
+            <p><strong>Por que o nome <strong>Med<span style="color:#75c7fb;">+</span></strong>?</strong></p>
+
+            <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+                dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
+                incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+
+            <p>"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born
+                and I will give you a complete account of the system, and expound the actual teachings of the great
+                explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids
+                pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure
+                rationally encounter consequences that are extremely painful.</p>
+        </div>
+    </section>
+
+    <section class="banner-institucional mb-4">
+        <div class="container">
+            <div class="row d-flex align-items-center ">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                    <img class="img-fluid d-none d-sm-none d-md-block d-lg-block d-xl-block" src="{% static 'images/covers/medical-tools.jpg' %}" alt="Medmais">
+                    <img class="img-fluid d-block d-sm-block d-md-none d-lg-none d-xl-none" src="{% static 'images/covers/medical-tools-horizontal.jpg' %}" alt="Medmais">
+                </div>
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                    <h3><strong>Uma empresa de serviços e equipamentos hospitalares</strong></h3>
+
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores deserunt temporibus eum non
+                        cum at consectetur assumenda harum quia officiis, iusto, in iste molestias dolorum vitae
+                        excepturi, necessitatibus odio facilis.</p>
+
+                    <p>Nulla blandit ullamcorper erat ac dapibus. Sed ut mattis elit. Etiam interdum dui sit amet ante
+                        bibendum sagittis. Aliquam erat volutpat. Etiam id sollicitudin massa. Morbi id ultricies justo.
+                        Curabitur ut mollis elit, non placerat orci. Aenean blandit tempus neque, vitae efficitur velit
+                        sagittis vitae. Ut id orci mattis, placerat sapien vel, hendrerit nisi. Curabitur feugiat
+                        viverra laoreet. Aenean vulputate sollicitudin sapien consectetur posuere. Praesent magna dui,
+                        volutpat et mauris sit amet, mollis auctor mi. Curabitur a lacus quis mauris porttitor posuere.
+                    </p>
+
+                    <p>Praesent non accumsan mauris. Duis eget maximus ipsum. Quisque nunc nisl, interdum pulvinar nibh
+                        non, consequat lacinia ex. Integer quam tortor, suscipit id turpis vel, mollis eleifend ex. Nunc
+                        urna purus, tincidunt sit amet molestie in, tincidunt et urna. Ut quis sagittis ipsum. Duis quam
+                        turpis, interdum ac fringilla eget, pulvinar at massa. In vitae tincidunt augue.</p>
+
+                    <p>Donec aliquet rutrum quam, at aliquam magna molestie eget. Fusce mollis leo at dignissim porta.
+                        Nullam orci mi, iaculis ac tincidunt volutpat, aliquam eu risus. Sed aliquet mi accumsan sapien
+                        ultricies, eu mollis nisi hendrerit. Ut sed viverra mauris. In et quam massa. Nam aliquam est et
+                        sem lacinia, id rutrum enim aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Etiam purus orci, lacinia ac elit quis, sodales interdum ante. Maecenas dignissim auctor arcu,
+                        quis vulputate nisl rutrum eu. Nulla urna urna, suscipit vel tellus nec, bibendum aliquam enim.
+                        Sed augue libero, feugiat ac egestas lacinia, mattis in orci.</p>
+
+                    <p>Mauris et turpis diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+                        cubilia curae; Maecenas in bibendum mauris. Mauris dictum nisi at bibendum euismod. Phasellus
+                        convallis mattis euismod. Aliquam at laoreet nibh. Curabitur tempor, urna non finibus congue,
+                        metus arcu semper est, vitae consectetur elit lorem fermentum libero. Praesent id elementum
+                        nulla. Vivamus mollis nulla non elementum tincidunt. Aenean viverra ante arcu, eget fermentum
+                        mauris molestie eget. Nunc commodo convallis leo, non maximus tortor bibendum eu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="missao-visao-valores mb-4 container">
+        <div id="accordion">
+            {% for objetivo in objetivos %}
+
+                <div class="card">
+                    <div class="card-header" id="{{ objetivo.nome }}">
+                        <h5 class="mb-0">
+                            <a href="#{{ objetivo.nome }}" data-toggle="collapse" data-target="#body-{{ objetivo.nome }}" aria-expanded="true"
+                                aria-controls="body-{{ objetivo.nome }}">
+                                {{ objetivo.nome }}
+                            </a>
+                        </h5>
+                    </div>
+
+                    <div id="body-{{ objetivo.nome }}" class="collapse
+
+                        {% if objetivo.id == 1 %}
+                            show
+                        {% endif %}"
+
+                         aria-labelledby="{{ objetivo.nome }}">
+                        <div class="card-body">
+                            {{ objetivo.texto }}
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

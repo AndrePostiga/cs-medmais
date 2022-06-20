@@ -1,0 +1,399 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load humanize %}
+
+{% block titulo %}
+    Produtos
+{% endblock %}
+
+{% block active-produtos %} active {% endblock %}
+
+{% block corpo %}
+
+    <section class="sobre">
+        <div class="sobre-banner jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4 mb-3">Cadastro de Produtos <strong>Med<span style="color:#75c7fb;">+</span></strong></h1>
+                <div class="d-flex justify-content-start">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'sobre' %}">Sobre</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'servico' %}">Serviços</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'parceiros' %}">Parceiros</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'cadastro-de-parceiros' %}">Cadastro de Parceiros</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Produtos</li>
+                            <li class="breadcrumb-item"><a href="{% url 'contato' %}">Contato</a></li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    {% if form %}
+
+    <section class="formulario-de-cadastro-de-produtos">
+        <form action="{% url 'produtos' %}" method="POST" id="formulario-cadastro-de-produtos" novalidate>
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.nome.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.nome.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="nome">Nome</span>
+                            </div>
+                            {{ form.nome }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.parceiro.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.parceiro.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="parceiro">Parceiro</span>
+                            </div>
+                            {{ form.parceiro }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.preco.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.preco.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="preco">Preço em Centavos</span>
+                            </div>
+                            {{ form.preco }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.descricao.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.descricao.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="descricao">Descrição</span>
+                            </div>
+                            {{ form.descricao }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.data_cadastro.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.data_cadastro.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="data_cadastro">Data de Cadastro</span>
+                            </div>
+                            {{ form.data_cadastro }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.quantidade.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.quantidade.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="qtd_estoque">Quantidade</span>
+                            </div>
+                            {{ form.quantidade }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                        {% if form.disponivel.errors %}
+                            <div class="alert alert-danger mb-1" role="alert" style="padding: 2px 0px">
+                                {% for error in form.disponivel.errors %}
+                                    <small class="m-1">{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="disponivel">Disponível</span>
+                            </div>
+                            {{ form.disponivel }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-5">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary btn-block" id="cadastrar-produto">Cadastrar Produto</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    {% endif %}
+
+    <section class="produtos container">
+        <h5 class="mb-3">Lista de Produtos</h5>
+
+        {% if messages %}
+            <div class="mb-3">
+                {% for message in messages %}
+                    <ul class="list-group rounded">
+                        <li class="list-group-item list-group-item-info" style="padding: 7px 5px">
+                            {{ message }}
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div id="tabela" style="min-height: 210px">
+            <table style="width: 100%" class="table table-striped table-sm table-bordered table-responsive mb-4">
+                <thread>
+                    <tr>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">Parceiro</th>
+                        <th class="text-center">Descrição</th>
+                        <th class="text-center">Data de Cadastro</th>
+                        <th class="text-center">Disponível</th>
+                        <th class="text-center">Quantidade</th>
+                        <th class="text-center">Preço</th>
+                        <th class="text-center">Preço Total</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    {% for produto, formQuantidade in produtos %}
+                        <tr id="{{ produto.id }}">
+                            <td style="display: none">{{ produto.id }}</td>
+                            <td class="text-center align-middle">{{ produto.produto.nome }}</td>
+                            <td class="text-center align-middle">{{ produto.produto.parceiro }}</td>
+                            <td class="text-center align-middle">{{ produto.produto.descricao }}</td>
+                            <td class="text-center align-middle">{{ produto.produto.data_cadastro | date:'d/m/Y' }}</td>
+                            <td class="text-center align-middle">{{ produto.produto.get_disponivel }}</td>
+                            <td class="text-center align-middle">
+                                <form action="{% url 'produtos' %}" method="POST" class="formulario-atualizacao-de-produtos" novalidate>
+                                    {% csrf_token %}
+                                    {{ formQuantidade.produto_id }}
+                                    {{ formQuantidade.quantidade }}
+                                </form>
+                            </td>
+                            <td class="text-center align-middle preco">{{ produto.preco_formatado }}</td>
+                            <td class="text-center align-middle preco-total">{{ produto.preco_total_formatado }}</td>
+                            <td class="text-center align-middle">
+                                <div class="d-flex d-inline-flex">
+                                    <form action="{% url 'produtos' %}" method="POST" class="formulario-delecao-de-produtos" novalidate>
+                                        {% csrf_token %}
+                                        <input type="hidden" id="produto_id" name="produto_id" value="{{ produto.id }}">
+                                        <button type="submit" class="btn btn-danger btn-block" id="deletar-produto">
+                                            <span class="fas fa-trash" aria-hidden="true"></span>
+                                            Deletar
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                        <tr id="ultima-linha-tabela">
+                            <td>Total</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td id="preco_total" class="text-center align-middle">{{ preco }}</td>
+                        </tr>
+                        <tr>
+                            <td>Quantidade</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td id="quantidade_total" class="text-center align-middle">{{ quantidade }}</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block dom-ready %}
+    $('#id_data_cadastro').datepicker({
+       changeMonth: true,
+       changeYear: true,
+       yearRange: "-3:+0",
+       dateFormat: 'dd/mm/yy',
+       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+       nextText: 'Próximo',
+       prevText: 'Anterior',
+       showOn: 'focus',
+   });
+
+   $('#id_data_cadastro').mask('00/00/0000');
+
+    function objectifyForm(form) {
+        let dataArray = form.serializeArray();
+        let dataObj = {};
+
+        $(dataArray).each(function(i, field){
+          dataObj[field.name] = field.value;
+        });
+
+        return dataObj;
+    }
+
+    function PrecoEmReais(preco) {
+        preco /= 100;
+        return preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    }
+
+    function DataFormatada(data){
+        return `${data.substring(8,10)}/${data.substring(5,7)}/${data.substring(0,4)}`
+    }
+
+    function BoolFormatado(booleano) {
+        if (booleano == true) return "Sim";
+
+        return "Não";
+    }
+
+    function AdicionaEventoParaDelecao(form){
+        form.on("submit", function(e) {
+            e.preventDefault();
+        });
+
+        form.find("button").click(function() {
+            let data = objectifyForm(form);
+            let formData = form.serializeArray();
+            let url = form.attr('action') + data.produto_id;
+
+            $.post(url, formData, function(response) {
+                $(`#${response.id}`).fadeOut( "slow", function() {
+                    $(`#${response.id}`).remove();
+                    $("#preco_total").text(PrecoEmReais(response.preco_total));
+                    $("#quantidade_total").text(response.quantidade_total);
+                });
+            });
+        });
+    }
+
+    let formDelecao = $('.formulario-delecao-de-produtos');
+    formDelecao.each(function() {
+        let thisForm = $(this)
+        AdicionaEventoParaDelecao(thisForm)
+    });
+
+    let form = $('#formulario-cadastro-de-produtos');
+    form.submit(function(e) {
+       e.preventDefault();
+    });
+
+    $('#cadastrar-produto').click(function() {
+        let formData = form.serializeArray();
+        let url = form.attr('action');
+
+        let ultimaLinha = $("#ultima-linha-tabela");
+
+        $.post(url, formData, function(response) {
+            $("#preco_total").text(PrecoEmReais(response.preco_total));
+            $("#quantidade_total").text(response.quantidade_total);
+            let innerHtml = `
+                <tr id="${response.produto.id}" style="display: none;">
+                    <td class="text-center align-middle">${response.produto.data.nome}</td>
+                    <td class="text-center align-middle">${response.produto.data.parceiro.nome}</td>
+                    <td class="text-center align-middle">${response.produto.data.descricao}</td>
+                    <td class="text-center align-middle">${DataFormatada(response.produto.data.data_cadastro)}</td>
+                    <td class="text-center align-middle">${BoolFormatado(response.produto.data.disponivel)}</td>
+                    <td class="text-center align-middle">
+                        <form action="{% url 'produtos' %}" method="POST" class="formulario-atualizacao-de-produtos" novalidate>
+                            {% csrf_token %}
+                            <input type="hidden" name="produto_id" value="${response.produto.id}" id="id_produto_id">
+                            <input type="text" name="quantidade" value="${response.produto.quantidade}" class="form-control text-center quantidade" onkeypress="return (event.charCode >= 48 &amp;&amp; event.charCode <= 57)" required="" id="id_quantidade">
+                        </form>
+                    </td>
+                    <td class="text-center align-middle preco">${PrecoEmReais(response.produto.preco)}</td>
+                    <td class="text-center align-middle preco-total">${PrecoEmReais(response.produto.preco_total)}</td>
+                    <td class="text-center align-middle">
+                        <div class="d-flex d-inline-flex">
+                            <form id="form-${response.produto.id}" action="{% url 'produtos' %}" method="POST" class="formulario-delecao-de-produtos" novalidate>
+                                {% csrf_token %}
+                                <input type="hidden" id="produto_id" name="produto_id" value="${response.produto.id}">
+                                <button type="submit" class="btn btn-danger btn-block" id="deletar-produto">
+                                    <span class="fas fa-trash" aria-hidden="true"></span>Deletar
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            `;
+            ultimaLinha.before(innerHtml);
+            $(`#${response.produto.id}`).fadeIn("slow")
+
+            let thisForm = $(`#form-${response.produto.id}`);
+            AdicionaEventoParaDelecao(thisForm);
+        });
+    });
+
+    $("#tabela").on("blur", "input.quantidade", function() {
+        let input = $(this);
+        let valor = input.val();
+        if (valor < 1 || valor > 99) {
+            $(this).focus();
+            return;
+        }
+
+        let form = $(this).parent();
+        let tr = form.parent().parent();
+        let formData = form.serializeArray();
+        let formLiteral = objectifyForm(form);
+        let url = form.attr("action") + formLiteral.produto_id + '/quantidade/' + formLiteral.quantidade;
+
+        $.post(url, formData, function(response) {
+            $("#preco_total").text(PrecoEmReais(response.preco_total));
+            $("#quantidade_total").text(response.quantidade_total);
+            input.val(response.produto.quantidade)
+            tr.find(".preco").text(PrecoEmReais(response.produto.preco))
+            tr.find(".preco-total").text(PrecoEmReais(response.produto.preco_total))
+        })
+    });
+{% endblock %}

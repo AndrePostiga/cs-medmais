@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Parceiros
+{% endblock %}
+
+{% block active-parceiros %} active {% endblock %}
+
+{% block corpo %}
+
+    <section class="sobre">
+        <div class="sobre-banner jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4 mb-3">Parceiros <strong>Med<span style="color:#75c7fb;">+</span></strong></h1>
+                <div class="d-flex justify-content-start">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'sobre' %}">Sobre</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'servico' %}">Serviços</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Parceiros</li>
+                            <li class="breadcrumb-item"><a href="{% url 'cadastro-de-parceiros' %}">Cadastro de Parceiros</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'contato' %}">Contato</a></li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    {% if form %}
+
+    <section class="busca container">
+        <form action="" method="GET" class="mb-4">
+
+            <div class="form-group row mb-2 mr-0">
+                <label for="id_nome" class="col-lg-12 col-form-label font-weight-bold">Nome</label>
+                <div class="col-11 mr-0 pr-0 pb-0 pt-0">
+                    {{ form.nome }}
+                </div>
+                <div class="col-1 p-0 m-0">
+                    <button type="submit" class="btn btn-primary rounded-0" style="height: 40px;">
+                        <span class="fas fa-search" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!--div class="form-group row">
+                <div class="col-lg-10 offset-lg-2">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="fas fa-search" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div-->
+
+        </form>
+    </section>
+
+    {% endif %}
+
+    <section class="parceiros container">
+        <h5 class="mb-3">Lista de parceiros</h5>
+
+        {% if messages %}
+            <div class="mb-3">
+                {% for message in messages %}
+                    <ul class="list-group rounded">
+                        <li class="list-group-item list-group-item-info" style="padding: 7px 5px">
+                            {{ message }}
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div style="min-height: 210px">
+            {% if parceiros %}
+                <table style="width: 100%" class="table table-striped table-sm table-bordered table-responsive mb-4">
+                    <thread>
+                        <tr>
+                            <th class="text-center">CNPJ</th>
+                            <th class="text-center">Nome</th>
+                            <th class="text-center">Endereço</th>
+                            <th class="text-center">Telefone</th>
+                            <th class="text-center">Data de parceria</th>
+                            <th class="text-center">Atualização de parceria</th>
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        {% for parceiro in parceiros %}
+                            <tr>
+                                <td width="20%" class="text-center align-middle">{{ parceiro.get_cnpj }}</td>
+                                <td width="30%" class="text-center align-middle">{{ parceiro.nome }}</td>
+                                <td width="30%" class="text-center align-middle">{{ parceiro.endereco }}</td>
+                                <td width="20%" class="text-center align-middle">{{ parceiro.get_telefone }}</td>
+                                <td width="15%" class="text-center align-middle">{{ parceiro.data_cadastro | date:'d/m/Y' }}</td>
+                                <td width="15%" class="text-center align-middle">{{ parceiro.data_atualizacao | date:'d/m/Y' }}</td>
+                                <td width="10%" class="text-center align-middle">
+                                    <div class="d-flex d-inline-flex">
+                                        <a href="{% url 'parceiros-edita' parceiro.id %}" class="btn btn-primary m-1">
+                                            <span class="fas fa-edit" aria-hidden="true"></span> Editar
+                                        </a>
+
+                                        <a href="{% url 'parceiros-deleta' parceiro.id %}" class="btn btn-danger m-1">
+                                            <span class="fas fa-trash" aria-hidden="true"></span> Deletar
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                  <span class="alert-parceiro"></span>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="paginacao container" style="font-size: 14px; margin-bottom: 28px">
+        {% if parceiros.has_other_pages %}
+            <ul class="pagination">
+                {% if parceiros.has_previous %}
+                    <li class="page-item"><a href="?pagina={{ parceiros.previous_page_number }}&nome={{ nome }}" class="page-link">Anterior</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a href="#" class="page-link" tabindex="-1">Anterior</a></li>
+                {% endif %}
+
+                {% for i in parceiros.paginator.page_range %}
+                    {% if parceiros.number == i %}
+                        <li class="page-item active"><a href="#" class="page-link">{{ i }}</a></li>
+                    {% else %}
+                        <li class="page-item"><a href="?pagina={{ i }}&nome={{ nome }}" class="page-link">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if parceiros.has_next %}
+                    <li class="page-item"><a href="?pagina={{ parceiros.next_page_number }}&nome={{ nome }}" class="page-link">Próxima</a></li>
+                {% else %}
+                    <li class="page-item disabled"><a href="#" class="page-link" tabindex="-1">Próxima</a></li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </section>
+{% endblock %}
+
+{% block dom-ready %}
+    let parceiro_buscado = $('.form-nome').val();
+
+    if(parceiro_buscado)
+    {
+        $('.alert-parceiro').text(`Não foram encontrados registros para o nome: ${parceiro_buscado}`);
+    }
+    else
+    {
+        $('.alert-parceiro').text('Não foram encontrados registros');
+    }
+
+
+{% endblock %}

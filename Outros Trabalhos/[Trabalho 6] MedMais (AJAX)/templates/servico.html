@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Serviços
+{% endblock %}
+
+{% block active-servicos %} active {% endblock %}
+
+{% block corpo %}
+
+    <section class="sobre">
+        <div class="sobre-banner jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4 mb-3">Conheça a <strong>Med<span style="color:#75c7fb;">+</span></strong></h1>
+                <div class="d-flex justify-content-start">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'sobre' %}">Sobre</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Serviços</li>
+                            <li class="breadcrumb-item"><a href="{% url 'parceiros' %}">Parceiros</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'cadastro-de-parceiros' %}">Cadastro de Parceiros</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'contato' %}">Contato</a></li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="info-servicos">
+        <div class="container">
+            <div class="row">
+                {% for card in servicos %}
+
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4">
+                        <div class="card">
+                            <img class="card-img-top" src="{% static 'images/' %}{{ card.imagem }}" alt="{{ card.titulo }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ card.titulo }}
+                                    {% if card.ehNovo %}
+                                        <span class="badge badge-dark">Novo</span>
+                                    {% endif %}
+                                </h5>
+
+                                <div class="d-flex justify-content-center" style="display: inline;">
+                                    <span id="like-{{ card.slug }}" data-like="{{ card.likes }}">{{ card.likes }}</span>
+                                    <a id="like-{{ card.slug }}-btn" href="javascript:void(0)" class="mx-2" style="text-decoration: none;">
+                                        <i class="far fa-thumbs-up"></i>
+                                    </a>
+                                    <a id="dislike-{{ card.slug }}-btn" href="javascript:void(0)" class="mx-2" style="text-decoration: none;">
+                                        <i class="far fa-thumbs-down"></i>
+                                    </a>
+                                    <span id="dislike-{{ card.slug }}" data-dislike="{{ card.dislikes }}">{{ card.dislikes }}</span>
+                                </div>
+
+                                <p class="card-text">
+                                    {{ card.texto }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
